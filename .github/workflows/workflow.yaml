@@ -1,0 +1,23 @@
+name: GitHub Actions Demo
+
+on:
+  push:
+    branches:    
+      - master
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test project
+        run: go test ./
+    
+  build:
+    name: Build 
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+    - name: Build file
+      run: go build .
+ 
